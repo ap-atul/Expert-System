@@ -1,0 +1,9 @@
+{
+  "target": {
+    "name" : "Kidney disease",
+    "rules": {
+      "1": "head aches + vomits + body aches | back aches => positive",
+      "2": "!something => negative"
+    }
+  }
+}
