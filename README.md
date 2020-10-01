@@ -1,13 +1,9 @@
 ## Expert System 
-Generic expert system to generate rules and create relation between entries and knowledge base.
-
-Implemented using Forward Chaining. Backward chaining will be added soon.
-
-Require to input well-formatted json files that correspond to the example in ```data``` folder
-
-The clauses should relate to the Knowledge base or it won't make any sense when run.
-
-Parsers are built to parse the json file and create objects on runtime.
+* Generic expert system to generate rules and create relation between entries and knowledge base.
+* Implemented using Forward Chaining. Backward chaining will be added soon.
+* Require to input well-formatted json files that correspond to the example in ```data``` folder
+* The clauses should relate to the Knowledge base or it won't make any sense when run.
+* Parsers are built to parse the json file and create objects on runtime.
 
 ### Description
 * The Rule is a string that can be compared.
@@ -19,15 +15,15 @@ Parsers are built to parse the json file and create objects on runtime.
 * The constants can be changed from ```utils/constants.py```
 
 ### Thought process
-- Json format file that can clearly define a structure to parse.
-- Reading the json file and building the Knowledge Base and the Clause Base.
-- The user input for each clause is converted to Knowledge Base.
-- Both Knowledge bases are compared and max percent matched is outputted.
-- There may be multiple matches, we could display details with percentage.
-- Finally answer is either True or False.
+* Json format file that can clearly define a structure to parse.
+* Reading the json file and building the Knowledge Base and the Clause Base.
+* The user input for each clause is converted to Knowledge Base.
+* Both Knowledge bases are compared and max percent matched is outputted.
+* There may be multiple matches, we could display details with percentage.
+* Finally answer is either True or False.
 
    
-- Knowledge base syntax
+* Knowledge base syntax
 ```json
 {
   "target": {
@@ -46,7 +42,8 @@ Parsers are built to parse the json file and create objects on runtime.
 }
 ```
 
-- Clause base syntax
+
+* Clause base syntax
 ```json
 {
   "1": {
