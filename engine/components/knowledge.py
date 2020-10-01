@@ -49,7 +49,7 @@ class Knowledge:
     def getRules(self):
         return self.__rules
 
-    def compareTo(self, knowledgeBase):
+    def compareTo(self, knowledgeBase, verbose=False):
         matchesRules = dict()
 
         # getting each knowledge from the base
@@ -67,7 +67,12 @@ class Knowledge:
 
         # high percentage is returned based on satisfication of MATCH
         matchesRules = sortDictionary(matchesRules)
-        Log.d(f"Matches :: {matchesRules}")
+
+        if verbose:
+            for target, percent in matchesRules.items():
+                Log.d(f"Target :: {target} --->  Matched :: {percent}")
+            print()
+
         for target, percent in matchesRules.items():
             if percent >= PERCENT_MATCH:
                 return True, target + " " + str(percent) + " % sure"

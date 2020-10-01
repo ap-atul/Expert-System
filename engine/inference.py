@@ -14,8 +14,11 @@ class Inference:
 
         self.__knowledgeBase = None
         self.__clauseBase = None
+        self.__verbose = None
 
-    def startEngine(self, knowledgeBase, clauseBase):
+    def startEngine(self, knowledgeBase, clauseBase, verbose=False):
+        self.__verbose = verbose
+
         if not os.path.isfile(knowledgeBase):
             Log.e(f"The knowledge file {knowledgeBase} does not exists.")
         if not os.path.isfile(clauseBase):
@@ -30,7 +33,7 @@ class Inference:
     def __askQuestion(self):
         for clause in self.__clauseBase:
             print()
-            userInput = input(Log.modes['WARN'] + AVATAR + " >>> " + clause.getClause() + "\n You >>> ").strip()
+            userInput = input(Log.modes['WARN'] + AVATAR + " >>> " + clause.getClause() + "\nYou >>> ").strip()
             output = self.__inferenceResolve(userInput)
             if output[0]:
                 Log.i(clause.getPositive() + output[1])
@@ -41,14 +44,13 @@ class Inference:
 
     def __inferenceResolve(self, userInput):
         userInputs = userInput.split(USER_INPUT_SEP)
-        print(userInputs)
         userKnowledge = Knowledge()
 
         # creating a knowledge base of the user input
         for userIn in userInputs:
             userKnowledge.addRule("user", userIn)
 
-        return userKnowledge.compareTo(self.__knowledgeBase)
+        return userKnowledge.compareTo(self.__knowledgeBase, verbose=self.__verbose)
 
 
 

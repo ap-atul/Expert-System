@@ -1,28 +1,80 @@
 ## Expert System 
 Generic expert system to generate rules and create relation between entries and knowledge base.
 
-### Rule
-Currently adding following operations
+Implemented using Forward Chaining. Backward chaining will be added soon.
 
-* AND : +
-* OR : |
-* NOT : !
+Require to input well-formatted json files that correspond to the example in ```data``` folder
+
+The clauses should relate to the Knowledge base or it won't make any sense when run.
+
+Parsers are built to parse the json file and create objects on runtime.
+
+### Description
+* The Rule is a string that can be compared.
+* Knowledge is formed up of multiple rules
+* Knowledge Base is formed up of multiple knowledge
+* Clause is a set of questions
+* Clause has 3 attributes clause, negative, positive
+* For each clause, the knowledge base is searched, percent higher than Min Match is outputted
+* The constants can be changed from ```utils/constants.py```
 
 ### Thought process
 - Json format file that can clearly define a structure to parse.
-- Getting Atom nodes from rule created from the Json file.
-- Using this Atom nodes to ask queries.
-- Logical Implication
-
-    | p | q | p => q|
-    | --- | --- | --- |
-    | T | T | T |
-    | T | F | F |
-    | F | T | T |
-    | F | F | T |
- 
-- Each rule Atom is query to the user, the answer is base on input.
-- Since answer can be conditional, binary, negate, and unknowns.
-- Finally the Atom gets evaluated to either True or False.
-- Rest is just evaluation of rule ( T + F | F | T).
+- Reading the json file and building the Knowledge Base and the Clause Base.
+- The user input for each clause is converted to Knowledge Base.
+- Both Knowledge bases are compared and max percent matched is outputted.
+- There may be multiple matches, we could display details with percentage.
 - Finally answer is either True or False.
+
+   
+- Knowledge base syntax
+```json
+{
+  "target": {
+    "name": "name of any situation or target",
+    "rules": {
+      "1": "statements",
+      "2": "more statements/ rules"
+    }
+  },
+  "target" : {
+    "name": "more",
+    "rules": {
+      "1": "something more"
+    }   
+  }
+}
+```
+
+- Clause base syntax
+```json
+{
+  "1": {
+    "question": "State your symptoms?",
+    "answer": {
+      "positive": "Yes, you are positive for ",
+      "negative": "We don't see any signs of "
+    }
+  },
+  "2": {
+    "question": "question/statement",
+    "answer": {
+      "positive": "positive statement with potential to add target at end",
+      "negative": "negative statement, target will be added at end"
+    }
+  }
+}
+```
+
+----------------------------------
+### Example
+```
+Chankya >>> State your symptoms?
+You >>> no sleep, head aches
+[DEBUG]  Target :: Kidney disease --->  Matched :: 50.0
+[DEBUG]  Target :: Lung disease --->  Matched :: 50.0
+[DEBUG]  Target :: Heart disease --->  Matched :: 0.0
+
+[INFO]  Yes, you are positive for Kidney disease 50.0 % sure
+[INFO]  Hope that you are satisfied with your answers !
+```

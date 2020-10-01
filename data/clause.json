@@ -5,12 +5,5 @@
       "positive": "Yes, you are positive for ",
       "negative": "We don't see any signs of "
     }
-  },
-  "2": {
-    "question": "State your symptoms?",
-    "answer": {
-      "positive": "Yes, you are positive for ",
-      "negative": "We don't see any signs of "
-    }
   }
 }
