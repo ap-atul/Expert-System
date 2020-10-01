@@ -21,10 +21,10 @@
     {
       "name": "Heart disease",
       "rules": {
-        "1": "head aches",
-        "2": "vomiting",
-        "3": "body ache",
-        "4": "no sleep"
+        "1": "ll",
+        "2": "kk",
+        "3": "pp",
+        "4": "dd"
       }
     }
   ]

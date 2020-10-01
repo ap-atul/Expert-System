@@ -19,7 +19,11 @@ class ClauseParser:
 
             for clause in file:
                 cl = Clause()
-                cl.addClause(file[clause])
+                cl.addClause(
+                    clause=file[clause]['question'],
+                    negative=file[clause]['answer']['negative'],
+                    positive=file[clause]['answer']['positive']
+                )
                 self.__clauses.append(cl)
 
         return self.__clauses

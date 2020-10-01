@@ -18,5 +18,11 @@ class Clause:
     def getClause(self):
         return self.__clause
 
+    def getPositive(self):
+        return self.__positive
+
+    def getNegative(self):
+        return self.__negative
+
     def __str__(self):
         return self.__clause

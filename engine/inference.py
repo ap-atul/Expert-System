@@ -4,7 +4,7 @@ from engine.components.knowledge import Knowledge, Rule
 from engine.logger.logger import Log
 from engine.parser.clauseParser import ClauseParser
 from engine.parser.knowledgeParser import KnowledgeBaseParser
-from engine.util.constants import USER_INPUT_SEP
+from engine.util.constants import USER_INPUT_SEP, AVATAR
 
 
 class Inference:
@@ -21,7 +21,7 @@ class Inference:
         if not os.path.isfile(clauseBase):
             Log.e(f"The clause file {clauseBase} does not exists.")
 
-        Log.i("Parsing the files to generate a Knowledge Base...")
+        Log.d("Parsing the files to generate a Knowledge Base...")
         self.__knowledgeBase = self.__knowledgeParser.getKnowledgeBase(knowledgeBase)
         self.__clauseBase = self.__clauseParser.getClauseBase(clauseBase)
 
@@ -29,20 +29,26 @@ class Inference:
 
     def __askQuestion(self):
         for clause in self.__clauseBase:
-            userInput = input(clause).strip()
-            self.__inferenceResolve(userInput)
+            print()
+            userInput = input(Log.modes['WARN'] + AVATAR + " >>> " + clause.getClause() + "\n You >>> ").strip()
+            output = self.__inferenceResolve(userInput)
+            if output[0]:
+                Log.i(clause.getPositive() + output[1])
+            else:
+                Log.i(clause.getNegative() + output[1])
 
-        Log.i("Hope that you are satisfied with your answer")
+        Log.i("Hope that you are satisfied with your answers !")
 
     def __inferenceResolve(self, userInput):
         userInputs = userInput.split(USER_INPUT_SEP)
+        print(userInputs)
         userKnowledge = Knowledge()
 
         # creating a knowledge base of the user input
         for userIn in userInputs:
-            userKnowledge.addRule("user", Rule(userIn))
+            userKnowledge.addRule("user", userIn)
 
-        return
+        return userKnowledge.compareTo(self.__knowledgeBase)
 
 
 

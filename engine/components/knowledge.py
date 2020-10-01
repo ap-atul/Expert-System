@@ -1,4 +1,5 @@
 from engine.logger.logger import Log
+from engine.util.constants import PERCENT_MATCH
 
 
 class Rule:
@@ -7,6 +8,18 @@ class Rule:
 
     def getRule(self):
         return self.__rule
+
+    def __eq__(self, other):
+        if other.__rule.__contains__(self.__rule):
+            return True
+        return False
+
+    def __str__(self):
+        return self.__rule
+
+
+def sortDictionary(matchesRules):
+    return {key: value for key, value in sorted(matchesRules.items(), key=lambda item: item[1], reverse=True)}
 
 
 class Knowledge:
@@ -29,3 +42,34 @@ class Knowledge:
         data.append("\n\n")
 
         return "".join(data)
+
+    def getTarget(self):
+        return self.__target
+
+    def getRules(self):
+        return self.__rules
+
+    def compareTo(self, knowledgeBase):
+        matchesRules = dict()
+
+        # getting each knowledge from the base
+        for knowledge in knowledgeBase:
+            match = 0
+
+            # comparing each rule
+            for rule in knowledge.getRules():
+                for baseRule in self.__rules:
+                    if rule == baseRule:
+                        match += 1
+
+            # adding the percent of match for each target
+            matchesRules[knowledge.getTarget()] = (match / len(knowledge.getRules())) * 100
+
+        # high percentage is returned based on satisfication of MATCH
+        matchesRules = sortDictionary(matchesRules)
+        Log.d(f"Matches :: {matchesRules}")
+        for target, percent in matchesRules.items():
+            if percent >= PERCENT_MATCH:
+                return True, target + " " + str(percent) + " % sure"
+            else:
+                return False, target
