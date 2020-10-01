@@ -19,7 +19,7 @@ class Log:
 		:param mode:
 		:return:
 		"""
-		print(f"{Log.modes[mode]}[{mode}] {self}")
+		print(f"{Log.modes[mode]}{self}")
 
 	@staticmethod
 	def setPrint(mode=True):
