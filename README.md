@@ -1,6 +1,6 @@
 ## Expert System 
 * Generic expert system to generate rules and create relation between entries and knowledge base.
-* Implemented using Forward Chaining. Backward chaining will be added soon.
+* Implemented using Forward Chaining and Backward chaining.
 * Require to input well-formatted json files that correspond to the example in ```data``` folder
 * The clauses should relate to the Knowledge base or it won't make any sense when run.
 * Parsers are built to parse the json file and create objects on runtime.
@@ -26,19 +26,24 @@
 * Knowledge base syntax
 ```json
 {
-  "target": {
-    "name": "name of any situation or target",
-    "rules": {
-      "1": "statements",
-      "2": "more statements/ rules"
+  "target": [
+    {
+      "name": "Kidney disease",
+      "rules": {
+        "1": "head aches",
+        "2": "vomiting",
+        "3": "body ache",
+        "4": "no sleep"
+      }
+    },
+    {
+      "name": "Some target",
+      "rules": {
+        "1": "rule1",
+        "2": "rule2"
+      }
     }
-  },
-  "target" : {
-    "name": "more",
-    "rules": {
-      "1": "something more"
-    }   
-  }
+  ]
 }
 ```
 

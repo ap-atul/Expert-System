@@ -1,37 +1,104 @@
-from engine.logger.logger import Log
-from engine.util.constants import PERCENT_MATCH
+"""
+The parsed output of the knowledge,json is used to create
+the Knowledge object consisting of the target and rules
+"""
 
 
 class Rule:
+    """
+    Class to store the rule in the string format
+
+    Attributes
+    -----------
+    __rule: str
+        rule for the knowledge
+    """
+
     def __init__(self, rule: str):
         self.__rule = rule
 
     def getRule(self):
+        """
+        Get the rule
+
+        Returns
+        -------
+        str
+            rule of the current object
+        """
         return self.__rule
 
     def __eq__(self, other):
+        """
+        Comparison of two rules. Substring and more complex
+        comparison
+
+        Parameters
+        ----------
+        other : Rule
+            object of the Rule
+
+        Returns
+        -------
+        bool
+            True if a match
+        """
         if other.__rule.__contains__(self.__rule):
             return True
         return False
 
     def __str__(self):
+        """
+        Print the rule string
+
+        Returns
+        -------
+        str
+            rule
+        """
         return self.__rule
 
 
-def sortDictionary(matchesRules):
-    return {key: value for key, value in sorted(matchesRules.items(), key=lambda item: item[1], reverse=True)}
-
-
 class Knowledge:
+    """
+    Class that connects the target with the rules (Rule objects).
+
+    Attributes
+    ----------
+    __target : str
+        name of the target or the output
+    __rules : list
+        list of the Rule objects
+
+    """
+
     def __init__(self):
         self.__target = None
         self.__rules = list()
 
     def addRule(self, target, rule):
+        """
+        Add new rule to the Knowledge
+
+        Parameters
+        ----------
+        target : str
+            output or the name of the target
+        rule : str
+            rule for the Knowledge
+        """
         self.__target = target
         self.__rules.append(Rule(rule))
 
     def __str__(self):
+        """
+        Printing the knowledge base with some formatting
+
+        Returns
+        -------
+        str
+            put together string
+        """
         data = list()
         data.append(self.__target)
         data.append(" =====> \n")
@@ -44,37 +111,23 @@ class Knowledge:
         return "".join(data)
 
     def getTarget(self):
+        """
+        Get the name of the output
+
+        Returns
+        -------
+        str
+            name of the target
+        """
         return self.__target
 
     def getRules(self):
+        """
+        Get the list of all the rules of the Knowledge
+
+        Returns
+        -------
+        list
+            all rules
+        """
         return self.__rules
-
-    def compareTo(self, knowledgeBase, verbose=False):
-        matchesRules = dict()
-
-        # getting each knowledge from the base
-        for knowledge in knowledgeBase:
-            match = 0
-
-            # comparing each rule
-            for rule in knowledge.getRules():
-                for baseRule in self.__rules:
-                    if rule == baseRule:
-                        match += 1
-
-            # adding the percent of match for each target
-            matchesRules[knowledge.getTarget()] = (match / len(knowledge.getRules())) * 100
-
-        # high percentage is returned based on satisfication of MATCH
-        matchesRules = sortDictionary(matchesRules)
-
-        if verbose:
-            for target, percent in matchesRules.items():
-                Log.d(f"Target :: {target} --->  Matched :: {percent}")
-            print()
-
-        for target, percent in matchesRules.items():
-            if percent >= PERCENT_MATCH:
-                return True, target + " " + str(percent) + " % sure"
-            else:
-                return False, target
