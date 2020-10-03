@@ -71,13 +71,29 @@
 
 ----------------------------------
 ### Example
-```
-Chankya >>> State your symptoms?
-You >>> no sleep, head aches
-[DEBUG]  Target :: Kidney disease --->  Matched :: 50.0
-[DEBUG]  Target :: Lung disease --->  Matched :: 50.0
-[DEBUG]  Target :: Heart disease --->  Matched :: 0.0
+* Backward Chaining
+```console
+Chankya >>> Tell me some features of this bird?
+You >>> high flight, strong legs, yellow legs
+[DEBUG] Target :: Falcons, Eagles --->  Matched :: 33.33333333333333
 
-[INFO]  Yes, you are positive for Kidney disease 50.0 % sure
-[INFO]  Hope that you are satisfied with your answers !
+[INFO] I am not sure if this is the bird Falcons, Eagles
+[INFO] Hope that you are satisfied with your answers !
+```
+
+* Forward Chaining
+```console
+Chankya >>> Tell me some features of this bird?
+You >>> high flight, strong legs, yellow legs
+[DEBUG] Target :: Falcons, Eagles --->  Matched :: 33.33333333333333
+[DEBUG] Target :: Peacock --->  Matched :: 0.0
+[DEBUG] Target :: Hen --->  Matched :: 0.0
+[DEBUG] Target :: Albatrosses --->  Matched :: 0.0
+[DEBUG] Target :: Paradise birds --->  Matched :: 0.0
+[DEBUG] Target :: Crows --->  Matched :: 0.0
+[DEBUG] Target :: Cuckoos --->  Matched :: 0.0
+[DEBUG] Target :: Ducks, Geese and Swans --->  Matched :: 0.0
+
+[INFO] I am not sure if this is the bird Falcons, Eagles
+[INFO] Hope that you are satisfied with your answers !
 ```

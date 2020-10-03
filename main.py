@@ -7,4 +7,4 @@ inferenceEngine = Inference()
 inferenceEngine.startEngine(knowledgeBaseFile,
                             clauseBaseFile,
                             verbose=True,
-                            method="backward")
+                            method="forward")
