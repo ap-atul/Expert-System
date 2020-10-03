@@ -1,0 +1,86 @@
+{
+  "target": [
+    {
+      "name": "Peacock",
+      "rules": {
+        "1": "long feathers",
+        "2": "no flight",
+        "3": "blue color",
+        "4": "eats snakes"
+      }
+    },
+    {
+      "name": "Hen",
+      "rules": {
+        "1": "no flight",
+        "2": "brown",
+        "3": "human eatable",
+        "4": "eats grains"
+      }
+    },
+    {
+      "name": "Albatrosses",
+      "rules": {
+        "1": "lives at sea",
+        "2": "wings 3m",
+        "3": "ocean",
+        "4": "eats fishes",
+        "5": "hooks",
+        "6": "divers"
+      }
+    },
+    {
+      "name": "Paradise birds",
+      "rules": {
+        "1": "colorful",
+        "2": "small",
+        "3": "indonesia",
+        "4": "australia",
+        "5": "pets",
+        "6": "famous"
+      }
+    },
+    {
+      "name": "Crows",
+      "rules": {
+        "1": "black",
+        "2": "common",
+        "3": "big",
+        "4": "flies far",
+        "5": "eats eggs",
+        "6": "disturbing"
+      }
+    },
+    {
+      "name": "Cuckoos",
+      "rules": {
+        "1": "lays in another nests",
+        "2": "kills other chicks",
+        "3": "push eggs",
+        "4": "push chicks",
+        "5": "steals nest"
+      }
+    },
+    {
+      "name": "Ducks, Geese and Swans",
+      "rules": {
+        "1": "long necks",
+        "2": "small legs",
+        "3": "small flights",
+        "4": "swims",
+        "5": "big"
+      }
+    },
+    {
+      "name": "Falcons, Eagles",
+      "rules": {
+        "1": "strong legs",
+        "2": "yellow legs",
+        "3": "black beaks",
+        "4": "flies high",
+        "5": "hunters",
+        "6": "big nests"
+      }
+    }
+  ]
+}

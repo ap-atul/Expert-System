@@ -13,6 +13,7 @@
 * Clause has 3 attributes clause, negative, positive
 * For each clause, the knowledge base is searched, percent higher than Min Match is outputted
 * The constants can be changed from ```utils/constants.py```
+* Check out the examples ```data/```
 
 ### Thought process
 * Json format file that can clearly define a structure to parse.

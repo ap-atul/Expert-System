@@ -1,7 +1,7 @@
 from engine.inference import Inference
 
-knowledgeBaseFile = "./data/knowledge.json"
-clauseBaseFile = "./data/clause.json"
+knowledgeBaseFile = "./data/birds/knowledge.json"
+clauseBaseFile = "./data/birds/clause.json"
 
 inferenceEngine = Inference()
 inferenceEngine.startEngine(knowledgeBaseFile,

@@ -1,0 +1,95 @@
+{
+  "target": [
+    {
+      "name": "Asthma",
+      "rules": {
+        "1": "wheezing",
+        "2": "shortness of breath",
+        "3": "tight chest",
+        "4": "coughing",
+        "5": "fast breathing",
+        "6": "feeling drowsy"
+      }
+    },
+    {
+      "name": "Arthritis",
+      "rules": {
+        "1": "joint pain",
+        "2": "tenderness",
+        "3": "stiffness",
+        "4": "inflammation in joints",
+        "5": "red skin",
+        "6": "weakness"
+      }
+    },
+    {
+      "name": "Bone Cancer",
+      "rules": {
+        "1": "bone pain",
+        "2": "inflammation",
+        "3": "lumps on bones",
+        "4": "weak bones",
+        "5": "fractures",
+        "6": "joint pains"
+      }
+    },
+    {
+      "name": "Brain Tumors",
+      "rules": {
+        "1": "severe headaches",
+        "2": "head pains",
+        "3": "seizures",
+        "4": "fits",
+        "5": "metal changes",
+        "6": "behavioural changes",
+        "7": "memory problems",
+        "8": "paralyses of parts of body"
+      }
+    },
+    {
+      "name": "Bronchitis",
+      "rules": {
+        "1": "coughs",
+        "2": "constant fevers",
+        "3": "high temperatures",
+        "4": "asthma",
+        "5": "heart pain"
+      }
+    },
+    {
+      "name": "Chest Infection",
+      "rules": {
+        "1": "cough",
+        "2": "mucus",
+        "3": "yellow mucus",
+        "4": "green mucus",
+        "5": "fevers",
+        "6": "rapid heartbeat",
+        "7": "tightness",
+        "8": "chest pain",
+        "9": "wheezing"
+      }
+    },
+    {
+      "name": "Common Cold",
+      "rules": {
+        "1": "runny nose",
+        "2": "block nose",
+        "3": "sneezing",
+        "4": "sore throat",
+        "5": "throat pain"
+      }
+    },
+    {
+      "name": "Anxiety",
+      "rules": {
+        "1": "stress",
+        "2": "headaches",
+        "3": "no sleep",
+        "4": "loss of appetite",
+        "5": "mood swings",
+        "6": "dizziness"
+      }
+    }
+  ]
+}

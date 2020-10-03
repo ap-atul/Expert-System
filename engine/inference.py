@@ -212,6 +212,9 @@ class Inference:
             # saving the target with its percent match
             matchesRules[matchedTarget.getTarget()] = (match / len(matchedTarget.getRules())) * 100
 
+        # sorting the matched rules by the percentages
+        matchesRules = sortDictionary(matchesRules)
+
         if self.__verbose:
             for target, percent in matchesRules.items():
                 Log.d(f"Target :: {target} --->  Matched :: {percent}")

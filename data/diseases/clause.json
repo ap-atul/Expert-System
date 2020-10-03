@@ -1,0 +1,9 @@
+{
+  "1": {
+    "question": "Tell me how do you feel?",
+    "answer": {
+      "positive": "I think you show symptoms of ",
+      "negative": "I am not sure but you show some signs of "
+    }
+  }
+}
