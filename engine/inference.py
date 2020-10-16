@@ -39,6 +39,9 @@ class Inference:
     """
 
     def __init__(self):
+        self.FORWARD = "forward"
+        self.BACKWARD = "backward"
+
         self.__knowledgeParser = KnowledgeBaseParser()
         self.__clauseParser = ClauseParser()
 
